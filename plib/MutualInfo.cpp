@@ -13,7 +13,7 @@ MutualInfo::MutualInfo(RawData & rd, ProbTable & pt) :
 }
 
 MutualInfo::~MutualInfo() {
-	// TODO Auto-generated destructor stub
+
 }
 
 double MutualInfo::get(uint featureIndex1, uint featureIndex2) {

@@ -17,28 +17,22 @@
  */
 RawData::RawData() {
 	dataFile = fopen("data.mrmr", "rb");
-
 	calculateDSandFS();
-
 	loadData();
-
 	calculateVR();
-
-
 }
 
-RawData::~RawData(){
+RawData::~RawData() {
 
 }
 
 /**
  *
  */
-void RawData::destroy(){
+void RawData::destroy() {
 	free(valuesRange);
 	free(data);
 }
-
 
 void RawData::calculateDSandFS() {
 	uint featuresSizeBuffer[1];
@@ -78,7 +72,7 @@ void RawData::calculateVR() {
 				vr++;
 			}
 		}
-		valuesRange[i] = vr+1;
+		valuesRange[i] = vr + 1;
 	}
 }
 

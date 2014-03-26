@@ -27,6 +27,5 @@ t_histogram Histogram::getHistogram(uint index) {
 	for (uint i = 0; i < rawData.getDataSize(); i++) {
 		h_acum[data[i]]++;
 	}
-	//free(data);	//FIXME
 	return h_acum;
 }

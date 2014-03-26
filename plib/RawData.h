@@ -20,7 +20,6 @@ public:
 	void calculateVR();
 	void calculateDSandFS();
 	void destroy();
-	void fix(uint index);
 	uint getValuesRange(uint index);
 	uint* getValuesRangeArray();
 	uint getDataSize();

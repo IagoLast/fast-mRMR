@@ -32,9 +32,6 @@ void JointProb::calculate() {
 	for (int i = 0; i < datasize; i++) {
 		data[h_vector1[i] * valuesRange2 + h_vector2[i]]++;
 	}
-
-//	free(h_vector1);
-//	free(h_vector2);
 }
 
 t_prob JointProb::getProb(t_data valueFeature1, t_data valueFeature2) {
