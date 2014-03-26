@@ -20,11 +20,11 @@ t_histogram Histogram::getHistogram(uint index) {
 	t_histogram h_acum = (t_histogram) malloc(vr * sizeof(uint));
 
 	// Initialize to zero
-	for (int i = 0; i < vr; i++) {
+	for (uint i = 0; i < vr; i++) {
 		h_acum[i] = 0;
 	}
 	//Calculate Histogram
-	for (int i = 0; i < rawData.getDataSize(); i++) {
+	for (uint i = 0; i < rawData.getDataSize(); i++) {
 		h_acum[data[i]]++;
 	}
 	//free(data);	//FIXME
