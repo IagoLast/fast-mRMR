@@ -50,7 +50,7 @@ options parseOptions(int argc, char*argv[]) {
 				exit(0);
 			}
 		}
-		cout << endl;
+		//cout << endl;
 	}
 	return opts;
 }
@@ -71,12 +71,12 @@ int main(int argc, char* argv[]) {
 	RawData rawData = RawData();
 	tm.start();
 	ProbTable prob = ProbTable(rawData);
-	cout << "Time CPU (histogram): " << tm.stop() << " ms" << endl;
+	//cout << "Time CPU (histogram): " << tm.stop() << " ms" << endl;
 	MutualInfo mutualInfo = MutualInfo(rawData, prob);
 	opts = parseOptions(argc, argv);
 
-	printf("Using feature no: %i as class feature\n", opts.classIndex + 1);
-	printf("%i features gonna be retrieved.\n", opts.selectedFeatures);
+	//printf("Using feature no: %i as class feature\n", opts.classIndex + 1);
+	//printf("%i features gonna be retrieved.\n", opts.selectedFeatures);
 
 	//Get relevances between all features and class.
 	for (i = 0; i < rawData.getFeaturesSize(); ++i) {
@@ -89,9 +89,9 @@ int main(int argc, char* argv[]) {
 	selectedFeatures.push_back(newFeatureIndex);
 	lastFeatureIndex = newFeatureIndex;
 
-	cout << "Feature\t Mrmr" << endl;
-	cout << newFeatureIndex << ":\t " << relevances[newFeatureIndex] << endl;
-
+	//cout << "Feature\t Mrmr" << endl;
+	//cout << newFeatureIndex << ":\t " << relevances[newFeatureIndex] << endl;
+	cout << newFeatureIndex << ",";
 	//MRMR
 	while (selectedFeatures.size() < rawData.getFeaturesSize() - 1 //-1 porque la class feature se descarta
 	and selectedFeatures.size() < opts.selectedFeatures) {
@@ -109,13 +109,18 @@ int main(int argc, char* argv[]) {
 				}
 			}
 		}
-		cout << newFeatureIndex << ":\t " << acum << "\n";
+		//Last feature doesn't prints comma.
+		if ( (selectedFeatures.size() == (opts.selectedFeatures - 1)) or (selectedFeatures.size() == (rawData.getFeaturesSize() -2)) ){
+			cout << newFeatureIndex;
+		}else{
+			cout << newFeatureIndex << ",";
+		}
 		selectedFeatures.push_back(newFeatureIndex);
 		lastFeatureIndex = newFeatureIndex;
 	}
 
 	rawData.destroy();
 	prob.destroy();
-	printf("End\n");
+	printf("\n");
 	return (0);
 }
