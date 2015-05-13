@@ -34,6 +34,7 @@ void RawData::destroy() {
 	free(data);
 }
 
+
 void RawData::calculateDSandFS() {
 	uint featuresSizeBuffer[1];
 	uint datasizeBuffer[1];
@@ -43,10 +44,12 @@ void RawData::calculateDSandFS() {
 	featuresSize = featuresSizeBuffer[0];
 }
 
+/**
+ * @brief Dumps data from a .mrmr file to memory.
+ */
 void RawData::loadData() {
 	uint i, j;
 	t_data buffer[1];
-	//	Reservo espacio para SIZE punteros
 	data = (t_data*) calloc(featuresSize, sizeof(t_data) * datasize);
 	fseek(dataFile, 8, 0);
 	for (i = 0; i < datasize; i++) {

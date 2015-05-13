@@ -19,6 +19,10 @@ ProbTable::~ProbTable() {
 
 }
 
+/**
+ * @brief Calculates The full table of probabilities for each feature.
+ * This values are cached in memory.
+ */
 void ProbTable::calculate() {
 	Histogram histogram = Histogram(rawData);
 	int i = 0;
@@ -37,8 +41,10 @@ void ProbTable::calculate() {
 }
 
 /**
- * @param featureIndex The index of the feature you want to get the probability.
- * @return The selected feature prob value.
+ * @brief Calculates P(X=x) where X is a feature and x a certain value.
+ * @param index: The index of the feature you want to get the probability.
+ * @param value: The possible feature value.
+ * @return The probability value .
  */
 double ProbTable::getProbability(uint index, t_data value) {
 	return table[index][value];

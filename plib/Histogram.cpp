@@ -14,6 +14,10 @@ Histogram::Histogram(RawData & rd): rawData(rd) {
 Histogram::~Histogram() {
 }
 
+/**
+ * @brief Calculates the histogram of a feature.
+ * @param index: The index of the feature to calculate the histogram.
+ */
 t_histogram Histogram::getHistogram(uint index) {
 	uint vr = rawData.getValuesRange(index);
 	t_feature data = rawData.getFeature(index);

@@ -18,6 +18,11 @@
 
 using namespace std;
 
+/**
+ * @brief Calculates the index of the most relevant feature (excluding the class).
+ * @param classRelevances: Array with the relevances for each class.
+ * @param classIndex: Index of the class feature, (this feature will be ignored).
+ */
 uint getMaxRelevance(vector<double> classRelevances, uint classIndex) {
 	uint i = 0;
 	uint newFeature = -1;
@@ -31,6 +36,12 @@ uint getMaxRelevance(vector<double> classRelevances, uint classIndex) {
 	return newFeature;
 }
 
+/**
+ * @brief Parse command line options
+ * 	-c Class index
+ * 	-f Number of features to select.
+ * 	-h print help
+ */
 options parseOptions(int argc, char*argv[]) {
 	options opts;
 	opts.classIndex = 0;
@@ -50,11 +61,13 @@ options parseOptions(int argc, char*argv[]) {
 				exit(0);
 			}
 		}
-		//cout << endl;
 	}
 	return opts;
 }
 
+/**
+ * @brief Main mRMR function.
+ */
 int main(int argc, char* argv[]) {
 	options opts;
 	uint i = 0;
@@ -71,26 +84,22 @@ int main(int argc, char* argv[]) {
 	RawData rawData = RawData();
 	tm.start();
 	ProbTable prob = ProbTable(rawData);
-	//cout << "Time CPU (histogram): " << tm.stop() << " ms" << endl;
 	MutualInfo mutualInfo = MutualInfo(rawData, prob);
 	opts = parseOptions(argc, argv);
-
-	//printf("Using feature no: %i as class feature\n", opts.classIndex + 1);
-	//printf("%i features gonna be retrieved.\n", opts.selectedFeatures);
 
 	//Get relevances between all features and class.
 	for (i = 0; i < rawData.getFeaturesSize(); ++i) {
 		relevances.push_back(mutualInfo.get(opts.classIndex, i));
+		cout << "Index: " << i << " " <<mutualInfo.get(opts.classIndex, i) << "\n";
 		redundances.push_back(0);
 	}
 
 	// Max relevance feature is added because no redundancy is possible.
 	newFeatureIndex = getMaxRelevance(relevances, opts.classIndex);
 	selectedFeatures.push_back(newFeatureIndex);
+
 	lastFeatureIndex = newFeatureIndex;
 
-	//cout << "Feature\t Mrmr" << endl;
-	//cout << newFeatureIndex << ":\t " << relevances[newFeatureIndex] << endl;
 	cout << newFeatureIndex << ",";
 	//MRMR
 	while (selectedFeatures.size() < rawData.getFeaturesSize() - 1 //-1 porque la class feature se descarta

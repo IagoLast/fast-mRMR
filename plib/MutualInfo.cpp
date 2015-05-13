@@ -16,6 +16,11 @@ MutualInfo::~MutualInfo() {
 
 }
 
+/**
+ * @brief Calculates the mutual information between 2 features
+ * @param featureIndex1:  Index of the first feature
+ * @param featureIndex2: Index of the second feature.
+ */
 double MutualInfo::get(uint featureIndex1, uint featureIndex2) {
 	uint range1 = rawData.getValuesRange(featureIndex1);
 	uint range2 = rawData.getValuesRange(featureIndex2);

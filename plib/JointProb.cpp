@@ -24,6 +24,11 @@ JointProb::~JointProb() {
 	free(data);
 }
 
+/**
+ * @brief Calculates the joint probability of 2 features.
+ * @param index1: Index of the first feature
+ * @param index2  Index of the second feature
+ */
 void JointProb::calculate() {
 	t_feature h_vector1 = rawData.getFeature(index1);
 	t_feature h_vector2 = rawData.getFeature(index2);
