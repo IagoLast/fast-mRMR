@@ -57,7 +57,7 @@ options parseOptions(int argc, char*argv[]) {
 			}
 			if (strcmp(argv[i], "-h") == 0) {
 				printf(
-						"Mrmr by Iago lastra:\nOptions:\n-c <index of class feature>\t\tUsed to select index of class feature. (from 1 to features Size)\n-f <number of mrmr features required>\t Indicates the number of features to select.\n-h Prints this message");
+						"Mrmr by Iago lastra:\nOptions:\n-c <index of class feature>\t\tUsed to select index of class feature. (from 1 to features Size)\n-f <number of mrmr features required>\t Indicates the number of features to select.\n-h Prints this message\n");
 				exit(0);
 			}
 		}
