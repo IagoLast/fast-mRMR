@@ -1,0 +1,4 @@
+/Debug/
+/Release/
+*.o
+fast_mrmr
