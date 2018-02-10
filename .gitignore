@@ -2,3 +2,5 @@
 /Release/
 *.o
 fast_mrmr
+.settings
+.DS_Store
