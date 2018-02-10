@@ -2,6 +2,7 @@
 
 This project contains a C++ implementation of the [mRMR algorithm](http://home.penglab.com/proj/mRMR/).
 
+See full explanation [here](https://github.com/IagoLast/fast-mrMR/blob/master/fast_mrmr.pdf)
 
 ### Boost library
 
@@ -15,8 +16,9 @@ brew install boost
 
 ### Compiling
 
+```bash
     make
-
+```
 
 This generates a binary file called `fast_mrmr` this file will read raw data from the `data.mrmr` file.
 
