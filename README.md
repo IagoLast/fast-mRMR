@@ -4,6 +4,8 @@ This project contains a C++ implementation of the [mRMR algorithm](http://home.p
 
 See full explanation [here](https://github.com/IagoLast/fast-mrMR/blob/master/fast_mrmr.pdf)
 
+This repository **does not include** the GPU version of the algorithm.
+
 ### Boost library
 
 You need [boost](http://www.boost.org/) libraries installed on your computer
